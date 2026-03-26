@@ -1,0 +1,150 @@
+/*single line comment*/
+/*importing Google Fonts*/
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*image for GLH Logo*/
+img{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+body {
+    font-family: 'Didact Gothic', sans-serif;
+    background: linear-gradient(135deg, #668d3d 0%, #067e10 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+}
+
+.form-container {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.form-toggle {
+    display: flex;
+}
+
+.form-toggle button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: #f0f0f0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.form-toggle button.active {
+    background: #067e10;
+    color: white;
+}
+
+.form {
+    padding: 30px;
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+.form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #067e10;
+}
+select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+select:focus {
+    outline: none;
+    border-color: #067e10;
+}
+.select-wrapper{
+    position: relative;
+    display: inline-block;
+}
+
+.option {
+    border-radius: 20px;
+}
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #067e10;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #055d0b;
+}
+
+.switch-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.switch-link a {
+    color: #067e10;
+    text-decoration: none;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
