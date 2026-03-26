@@ -15,40 +15,37 @@
             </ul>
         </nav>
     </header>
-      <main>
-        <section class="categories">
-            <h1>Our Categories</h1>
-            <p>Explore the different categories of products available on GLH.</p>
-        </section>
-    </main>
+            <main>
+<section class="categories">
+  <h1>Our Categories</h1>
+  <p>Explore the different categories of products available on GLH.</p>
+
+  <div class="card-overlay">
     <div class="card-container">
-        <div class="card">
-            <img src="../pictures/fruit&veg.jpg" alt="Fruit and Vegetables">
-            <h3>Fruit and Vegetables</h3>
-            <p>Discover a wide variety of fresh and locally sourced fruits and vegetables, perfect for your healthy meals.</p>
-        </div>
-        <div class="card">
-            <img src="../pictures/dairy.jpg" alt="Dairy Products">
-            <h3>Dairy Products</h3>
-            <p>Explore our selection of fresh dairy products, sourced from local farms and delivered to your doorstep.</p>
-        </div>
-        <div class="card">
-            <img src="../pictures/meat.jpg" alt="Meat and Poultry">
-            <h3>Meat and Poultry</h3>
-            <p>Discover a variety of fresh meat and poultry options, sourced from local farms and butcher shops.<br> This includes Halal and Kosher meats aswell. look out for the symbol!</p>
-
-        </div>
-        <div class="card">
-            <img src="../pictures/bakery.jpg" alt="Bakery Goods">
-            <h3>Bakery Goods</h3>
-            <p>Indulge in our communities selection of freshly baked goods, including bread, pastries, and cakes, made by local bakers.</p>
-        </div>
-        <div class="card">
-            <img src="../pictures/beverages.jpg" alt="Beverages">
-            <h3>Beverages</h3>
-            <p>Quench your thirst with our variety of fresh beverages, from juices to coffee, sourced from local producers.</p>
-        </div>
-
+      <div class="card">
+        <img src="../pictures/fruit&veg.jpg" alt="Fruit and Vegetables">
+        <h3>Fruit and Vegetables</h3>
+        <p>Discover ...</p>
+      </div>
+      <div class="card">
+        <img src="../pictures/dairy.jpg" alt="Dairy Products">
+        <h3>Dairy Products</h3>
+        <p>Explore ...</p>
+      </div>
+      <div class="card">
+        <img src="../pictures/meat.jpg" alt="Meat and Poultry">
+        <h3>Meat and Poultry</h3>
+        <p>Discover ...</p>
+      </div>
+      <div class="card">
+        <img src="../pictures/bakery.jpg" alt="Bakery Goods">
+        <h3>Bakery Goods</h3>
+        <p>Indulge ...</p>
+      </div>
+    </div>
+  </div>
+</section>
+            </main>
     <footer>
         <p>&copy; 2024 GLH. All rights reserved.</p>
     </footer>

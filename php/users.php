@@ -10,6 +10,27 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Ensure total_points column exists
+$result = $conn->query("SHOW COLUMNS FROM users LIKE 'total_points'");
+if ($result->num_rows == 0) {
+    $conn->query("ALTER TABLE users ADD COLUMN total_points INT DEFAULT 0");
+}
+
+// Fetch user's current points with error handling
+$userPoints = 0;
+$userQuery = $conn->prepare("SELECT total_points FROM users WHERE id = ?");
+if ($userQuery) {
+    $userQuery->bind_param("i", $user_id);
+    $userQuery->execute();
+    $userResult = $userQuery->get_result();
+    $userData = $userResult->fetch_assoc();
+    $userPoints = $userData['total_points'] ?? 0;
+    $userQuery->close();
+}
+
+// Points calculation constant (10 points per £1 spent)
+$POINTS_PER_POUND = 10;
+
 // Create orders table if not exists
 $createOrders = "
 CREATE TABLE IF NOT EXISTS orders (
@@ -18,12 +39,35 @@ CREATE TABLE IF NOT EXISTS orders (
   order_number VARCHAR(50) NOT NULL UNIQUE,
   status ENUM('Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled') DEFAULT 'Pending',
   total DECIMAL(10,2) NOT NULL,
+  points_earned INT DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 if (!$conn->query($createOrders)) {
     die("Table create failed: " . $conn->error);
+}
+
+// Ensure points_earned column exists in orders table
+$resultOrders = $conn->query("SHOW COLUMNS FROM orders LIKE 'points_earned'");
+if ($resultOrders->num_rows == 0) {
+    $conn->query("ALTER TABLE orders ADD COLUMN points_earned INT DEFAULT 0");
+}
+
+// Create point history table if not exists
+$createPointHistory = "
+CREATE TABLE IF NOT EXISTS point_history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  order_id INT,
+  points_earned INT NOT NULL,
+  description VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (order_id) REFERENCES orders(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+if (!$conn->query($createPointHistory)) {
+    die("Point history table create failed: " . $conn->error);
 }
 
 // Handle status update
@@ -38,8 +82,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id']) && isset(
         $updateQuery->execute();
         $updateQuery->close();
     }
+    
+    // Award points when order is delivered
+    if ($new_status === 'Delivered') {
+        $orderQuery = $conn->prepare("SELECT order_number, total, points_earned, status FROM orders WHERE id = ? AND user_id = ?");
+        $orderQuery->bind_param("ii", $order_id, $user_id);
+        $orderQuery->execute();
+        $orderResult = $orderQuery->get_result();
+        $orderData = $orderResult->fetch_assoc();
+        $orderQuery->close();
+        
+        if ($orderData && $orderData['points_earned'] == 0) {
+            // Calculate points (10 points per £1)
+            $pointsEarned = (int)($orderData['total'] * $POINTS_PER_POUND);
+            
+            // Update order with points earned
+            $updateOrder = $conn->prepare("UPDATE orders SET points_earned = ? WHERE id = ?");
+            $updateOrder->bind_param("ii", $pointsEarned, $order_id);
+            $updateOrder->execute();
+            $updateOrder->close();
+            
+            // Add to user's total points
+            $updateUser = $conn->prepare("UPDATE users SET total_points = total_points + ? WHERE id = ?");
+            $updateUser->bind_param("ii", $pointsEarned, $user_id);
+            $updateUser->execute();
+            $updateUser->close();
+            
+            // Log point history
+            $historyInsert = $conn->prepare("INSERT INTO point_history (user_id, order_id, points_earned, description) VALUES (?, ?, ?, ?)");
+            $description = "Earned from order #" . $orderData['order_number'];
+            $historyInsert->bind_param("iis", $user_id, $order_id, $pointsEarned, $description);
+            $historyInsert->execute();
+            $historyInsert->close();
+        }
+    }
 }
-$query = $conn->prepare("SELECT id, order_number, status, total, created_at, updated_at FROM orders WHERE user_id = ? ORDER BY created_at DESC");
+$query = $conn->prepare("SELECT id, order_number, status, total, points_earned, created_at, updated_at FROM orders WHERE user_id = ? ORDER BY created_at DESC");
 $query->bind_param("i", $user_id);
 $query->execute();
 $result = $query->get_result();
@@ -80,8 +158,23 @@ function get_step_class($step, $currentStep, $status) {
 </head>
 <body>
     <div class="container">
-        <h1>My Orders</h1>
-        <p>Welcome, <?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?>!</p>
+        <h1>Welcome, <?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?>!</h1>
+        
+        
+        <!-- Points Tracker Card -->
+        <div class="points-tracker-card">
+            <div class="points-content">
+                <div class="points-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="points-info">
+                    <h3>GLH Loyalty Points</h3>
+                    <p class="points-display"><?php echo number_format($userPoints); ?> Points</p>
+                    <p class="points-description">Earn 10 points for every £1 spent. Redeem for rewards!</p>
+                    <a href="GLHLoyalty.php" class="points-link">View Rewards →</a>
+                </div>
+            </div>
+        </div>
 
         <?php if (empty($orders)): ?>
             <p>You have no orders yet.</p>
@@ -115,6 +208,7 @@ function get_step_class($step, $currentStep, $status) {
                         <th>Order Number</th>
                         <th>Status</th>
                         <th>Total</th>
+                        <th>Points Earned</th>
                         <th>Created At</th>
                         <th>Last Updated</th>
                         <th>Actions</th>
@@ -126,6 +220,7 @@ function get_step_class($step, $currentStep, $status) {
                             <td><?php echo htmlspecialchars($order['order_number']); ?></td>
                             <td><?php echo htmlspecialchars($order['status']); ?></td>
                             <td>£<?php echo number_format($order['total'], 2); ?></td>
+                            <td><?php echo $order['points_earned'] > 0 ? '+' . number_format($order['points_earned']) : '-'; ?></td>
                             <td><?php echo htmlspecialchars($order['created_at']); ?></td>
                             <td><?php echo htmlspecialchars($order['updated_at']); ?></td>
                             <td>
@@ -142,15 +237,14 @@ function get_step_class($step, $currentStep, $status) {
                 </tbody>
             </table>
         <?php endif; ?>
-
-        <header>
+        
+        <br>
+        <a href="homepage.php">Back to Homepage</a>
+    </div>
+    
+    <div class="sidebar">
         <nav>
             <img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo">
-        </nav>
-    
-    </header>
-    <div class="sidebar">
-        <ul>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="marketplace.php">Marketplace</a></li>
             <li><a href="categories.php">Categories</a></li>
@@ -158,53 +252,11 @@ function get_step_class($step, $currentStep, $status) {
             <li><a href="delivery_collection.php">Delivery and Collection</a></li>
             <li><a href="GLHLoyalty.php">GLHLoyalty</a></li>
             <li><a href="settings.php">Settings</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
+            <li><a href="logout.php" id="logout-link">Logout</a></li>
+        </nav>
     </div>
 
-    <section class="hero">
-            <h1>Welcome to Greenfield Local Hub</h1>
-            <h1>Find local farmers and producers near you</h1>
-            <form>
-                <div class="search">
-                    <i class="fas fa-magnifying-glass"></i>
-                    <input type="text" placeholder="What are you looking for? Seasonal items...? Locations...?" name="search">
-                </div>
-            </form>
-            
-        </section>
-
-        <div class="card-container">
-        <div class="card">
-            <img src="../pictures/fruit&veg.jpg" alt="What Greenfield Local Hub Offers">
-            <h3>FOOD</h3>
-            <p>Discover a wide variety of fresh and locally sourced fruits and vegetables, perfect for your healthy meals.</p>
-        </div>
-
-        <section class="features">
-            <div class="feature">
-                <h3>FOOD, DRINKS AND FRESH PRODUCE</h3>
-                <p>We offer a wide range of healthcare services to meet your needs, from primary care to specialized treatments.</p>
-            </div>
-            <div class="feature">
-                <h3>COME CHECK IT OUT!</h3>
-                <p>Our team consists of highly skilled and compassionate healthcare providers who are dedicated to your well-being.</p>
-            </div>
-            <div class="feature">
-                <h3>JOIN OUR COMMUNITY</h3>
-                <p>Our modern facilities are equipped with the latest technology to ensure you receive the best care possible.</p>
-            </div>
-            <div class="feature">
-                <h3>HAVE A LOOK AT WHATS NEW</h3>
-                <p>Our modern facilities are equipped with the latest technology to ensure you receive the best care possible.</p>
-            </div>
-        </section>
-    </div>
-
-
-        <br>
-        <a href="homepage.php">Back to Homepage</a>
-    </div>
+  
 </body>
 </html>
 

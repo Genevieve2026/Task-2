@@ -1,0 +1,69 @@
+/*importing Google Fonts*/
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Didact Gothic', sans-serif;
+    background: linear-gradient(to top, #067e10, #409c47);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 20px;
+}
+.categories {
+  position: relative;
+  z-index: 0;
+  background-image: url('../pictures/categories.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 85vh;
+  padding: 90px 20px 140px; /* space for hero + cards */
+}
+
+.categories::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  z-index: 1;
+}
+
+.categories h1,
+.categories p {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.card-overlay {
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(96%, 1200px);
+  z-index: 3;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.42);
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.20);
+  padding: 18px;
+}

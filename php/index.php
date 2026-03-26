@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   role ENUM('Customer','Farmer/Producer') NOT NULL,
+  total_points INT DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 if (!$conn->query($createUsers)) {
@@ -136,17 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Check if user is logged in
 $isLoggedIn = isset($_SESSION['user_id']);
-
-// If already logged in, redirect to the appropriate dashboard immediately
-if ($isLoggedIn) {
-    if (isset($_SESSION['role']) && $_SESSION['role'] === 'Customer') {
-        header('Location: users.php');
-        exit;
-    } elseif (isset($_SESSION['role']) && $_SESSION['role'] === 'Farmer/Producer') {
-        header('Location: admin.php');
-        exit;
-    }
-}
 ?>
 
 <!DOCTYPE html>

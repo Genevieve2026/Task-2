@@ -1,0 +1,141 @@
+/*importing Google Fonts*/
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Didact Gothic', sans-serif;
+  background-color: #67b06d ;
+}
+.logo {
+    height: 100px;
+    width: auto;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #fff;
+  color: #333;
+  padding: 30px 12px;
+  box-sizing: border-box;
+}
+
+.sidebar nav li {
+  margin: 50px 0; /* Increase space between nav items */
+}
+
+.sidebar nav a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #2c8d45;
+}
+
+.container{
+    margin-left: 240px; /* match sidebar width + gap */
+    padding: 24px;
+    color: white;
+}
+.content {
+  margin-left: 240px; /* match sidebar width + gap */
+  padding: 24px;
+  color: white;
+}
+
+.content{
+  margin-left: 240px; /* match sidebar width + gap */
+  padding: 24px;
+  color: white;
+}
+.content section {
+  padding: 40px 0;
+  border-bottom: 1px solid #ddd;
+}
+/*css for search bar on homepage*/
+.search{
+    --padding: 24px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    padding: var(--padding);
+    border-radius: 28px;
+    background: #f0f0f0bb;
+    width: 900px;
+}
+.search input{
+    font-size: 16px;
+    font-family: 'Didact Gothic', sans-serif;
+    color: #333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    flex: 1;
+}
+
+/* Points Tracker Card */
+.points-tracker-card {
+    background: linear-gradient(135deg, #2c8d45 0%, #1c6b2f 100%);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.points-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.points-icon {
+    font-size: 48px;
+    color: #ffd700;
+}
+
+.points-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.points-display {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffd700;
+    margin: 8px 0;
+}
+
+.points-description {
+    font-size: 14px;
+    color: #e8f5e9;
+    margin-bottom: 12px;
+}
+
+.points-link {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.points-link:hover {
+    text-decoration: underline;
+}
