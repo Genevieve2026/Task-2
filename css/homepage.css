@@ -8,7 +8,7 @@
 }
 body {
     font-family: 'Didact Gothic', sans-serif;
-    background: linear-gradient(to top, #067e10, #409c47);
+    background: white;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -33,7 +33,6 @@ nav ul li {
 nav ul li a {
     color: black;
     text-decoration: none;
-    font-family: 'Didact Gothic', sans-serif;
     font-size: 18px;
 }
 nav ul li a:hover {
@@ -49,23 +48,24 @@ nav ul li button {
     border: none;
     border-radius: 40px;
     cursor: pointer;
-    font-family: 'Didact Gothic', sans-serif;
     font-size: 18px;
+}
+nav ul li button:hover {
+    background-color: white;
 }
 /*css for search bar on homepage*/
 .search{
     --padding: 24px;
-    width: max-content;
+    width: 900px;
     display: flex;
     align-items: center;
     padding: var(--padding);
     border-radius: 28px;
     background: #f0f0f0bb;
-    width: 900px;
+    max-width: 900px;
 }
 .search input{
     font-size: 16px;
-    font-family: 'Didact Gothic', sans-serif;
     color: #333;
     margin-left: var(--padding);
     outline: none;
@@ -89,16 +89,19 @@ nav ul li button {
     padding: 20px;
 }
 .hero h1{
-    font-family: 'Didact Gothic', sans-serif;
+
     font-size: 48px;
     color: white;
     margin-bottom: 20px;
 }
 
 .card-container {
+  max-width: 1000px;
+  margin: 40px auto;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .card {
@@ -108,9 +111,111 @@ nav ul li button {
   box-shadow: 0 14px 28px rgba(0,0,0,0.20);
   padding: 18px;
 }
-footer p{
-    background-color: #dcdcdc;
-    text-align: center;
-    padding: 20px;
+footer {
+    background-color: #01660a;
+    color: #ffffff;
+    padding: 40px 20px;
     font-family: 'Didact Gothic', sans-serif;
+}
+
+footer .logo {
+    width: 67px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+footer h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #FFEABA;
+}
+
+/* Layout */
+footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* Sections */
+footer div {
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Links */
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #FFEABA;
+}
+
+/* Social media */
+.social-media a {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Quick links */
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links li {
+    margin: 5px 0;
+}
+
+/* Newsletter */
+.newsletter input[type="email"] {
+    padding: 8px;
+    width: 100%;
+    max-width: 200px;
+    border: none;
+    border-radius: 25px;
+    margin-top: 5px;
+}
+
+.newsletter button {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #66bd3d;
+    color: #1f2a2e;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.newsletter button:hover {
+    background-color: #66bd3d
+}
+
+/* Payment icons */
+.banks img {
+    width: 50px;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+/* Legal section */
+.legal {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 15px;
+}
+.banks img{
+    width: 50px;
+    margin-right: 8px;
+    margin-top: 10px;
 }

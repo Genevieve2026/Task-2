@@ -17,3 +17,7 @@ nav ul{
     border-radius: 20px;
     margin: 20px;
 }
+nav ul img {
+    height: 50px;
+    width: auto;
+}
