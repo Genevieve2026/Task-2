@@ -108,3 +108,9 @@ nav ul li button {
   box-shadow: 0 14px 28px rgba(0,0,0,0.20);
   padding: 18px;
 }
+footer p{
+    background-color: #dcdcdc;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Didact Gothic', sans-serif;
+}
