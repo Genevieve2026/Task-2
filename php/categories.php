@@ -5,49 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GLH Categories</title>
     <link rel="stylesheet" href="../css/categories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo">
-                <li>Categories</li>
-            </ul>
-        </nav>
-    </header>
-            <main>
-<section class="categories">
-  <h1>Our Categories</h1>
-  <p>Explore the different categories of products available on GLH.</p>
+    <section class="categories" id="categories">
+      <div class="heading">
+        <h1>Browse Our Categories</h1>
+        <p>Discover a wide range of locally sourced products from our trusted farmers and producers.</p>
+          <a href="#" class="btn">See All<i class="fas fa-arrow-right"></i></a>
+      </div>
+    </section>
 
-  <div class="card-overlay">
-    <div class="card-container">
-      <div class="card">
-        <img src="../pictures/fruit&veg.jpg" alt="Fruit and Vegetables">
-        <h3>Fruit and Vegetables</h3>
-        <p>Discover ...</p>
-      </div>
-      <div class="card">
-        <img src="../pictures/dairy.jpg" alt="Dairy Products">
-        <h3>Dairy Products</h3>
-        <p>Explore ...</p>
-      </div>
-      <div class="card">
-        <img src="../pictures/meat.jpg" alt="Meat and Poultry">
-        <h3>Meat and Poultry</h3>
-        <p>Discover ...</p>
-      </div>
-      <div class="card">
-        <img src="../pictures/bakery.jpg" alt="Bakery Goods">
-        <h3>Bakery Goods</h3>
-        <p>Indulge ...</p>
-      </div>
-    </div>
-  </div>
-</section>
-            </main>
     <footer>
-        <p>&copy; 2024 GLH. All rights reserved.</p>
+        <p>&copy; 2026 GLH. All rights reserved.</p>
     </footer>
 </body>
 </html>

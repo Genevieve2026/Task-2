@@ -98,6 +98,7 @@ body {
     outline: none;
     border-color: #067e10;
 }
+
 select{
     width: 100%;
     padding: 12px;
@@ -148,3 +149,22 @@ select:focus {
 .switch-link a:hover {
     text-decoration: underline;
 }
+/*ccs for back button*/
+ .back-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px; /* space between icon and text */
+        padding: 8px 14px;
+        color: #333;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+        background-color: #f0f0f0;
+    }
+    .back-icon {
+        font-size: 18px;
+        line-height: 1;
+    }

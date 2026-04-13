@@ -1,0 +1,38 @@
+/*single line comment*/
+/*importing Google Fonts*/
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.redirect-container{
+    font-family: 'Didact Gothic', sans-serif;
+    background: linear-gradient(135deg, #668d3d 0%, #067e10 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(255,255,255,0.42);
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.20);
+  padding: 18px;
+}
+a {
+    color: #067e10;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #01660A;
+}

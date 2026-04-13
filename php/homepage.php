@@ -15,11 +15,11 @@
         <nav>
             <ul>
                 <li><img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo"></li>
-                <li><a href="marketplace.php">Marketplace</a></li>
-                <li><a href="categories.php">Categories</a></li>
-                <li><a href="delivery&collection.php">Delivery and <br>Collection</a></li>
-                <li><a href="about.php">About Us</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="../php/redirect.php">Marketplace</a></li>
+                <li><a href="../php/redirect.php">Categories</a></li>
+                <li><a href="../php/redirect.php">Delivery and <br>Collection</a></li>
+                <li><a href="../php/redirect.php">About Us</a></li>
+                <li><a href="../php/redirect.php">Contact</a></li>
                 <li><a href="../php/index.php">Sign in</a></li>
                 <li><button><a href="../php/index.php">Join Us Today</a></button></li>
             </ul>
@@ -49,30 +49,41 @@
 
         <section class="card-container">
             <div class="card">
-                <img src="" alt="community">
+                <img src="../pictures/community.webp" alt="community">
                 <h2>Community Engagement</h2>
                 <p>We actively engage with our local community through events, workshops, and partnerships with local organizations. We believe in fostering a sense of community and supporting local initiatives that promote sustainability.</p>
             </div>
             
             <div class="card">
-                <img src="" alt="community">
-                <h2>Community Engagement</h2>
-                <p>We actively engage with our local community through events, workshops, and partnerships with local organizations. We believe in fostering a sense of community and supporting local initiatives that promote sustainability.</p>
+                <img src="../pictures/locally grown.jpg" alt="locally grown">
+                <h2>The importance of local food systems</h2>
+                <p>Local food systems play a crucial role in promoting sustainability, reducing carbon footprints, and supporting local economies. By choosing locally grown produce, consumers can contribute to a more sustainable and resilient food system.</p>
             </div>
 
             <div class="card">
-                <img src="" alt="community">
-                <h2>Community Engagement</h2>
-                <p>We actively engage with our local community through events, workshops, and partnerships with local organizations. We believe in fostering a sense of community and supporting local initiatives that promote sustainability.</p>
+                <img src="../pictures/produce_range.webp" alt="produce range">
+                <h2>Ranges of Produce</h2>
+                <p>We offer a wide variety of fresh, locally-sourced produce throughout the year, ensuring that our customers have access to the highest quality fruits and vegetables, meats and seafood.</p>
             </div>
 
             <div class="card">
-                <img src="" alt="community">
-                <h2>Community Engagement</h2>
-                <p>We actively engage with our local community through events, workshops, and partnerships with local organizations. We believe in fostering a sense of community and supporting local initiatives that promote sustainability.</p>
+                <img src="../pictures/sellers.jpg" alt="sellers">
+                <h2>Sellers near and dear to you</h2>
+                <p>Our platform connects you with trusted local sellers who are passionate about providing fresh, high-quality produce directly from their farms to your table.</p>
             </div>
         </section>
     </main>
+
+    <!===Testimonials from customers and sellers===!>
+
+    <section class="testimonials">
+        <h2 class="testimonial-heading">What Our Customers and Sellers Say</h2>
+
+        <div class="testimonial-swiper container">
+            <div>
+                <article class="testimonial-card">
+                    <p>"GLH has transformed the way I shop for groceries. The quality of the produce is exceptional, and I love supporting local farmers."</p>
+                    <h3>- Sarah M.</h3>
 
     <footer>
 
