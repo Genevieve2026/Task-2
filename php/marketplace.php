@@ -38,7 +38,9 @@ if ($result) {
         <div class="categories__hero">
             <div class="categories__heading">
                 <span class="eyebrow">categories</span>
+                <span class="back-link"><a href="../php/homepage.php"><i class="fas fa-arrow-left"></i> Back to Home</a></span>
                 <h1>Browse Our Categories</h1>
+
                 <p>Discover a wide range of locally sourced products from our trusted farmers and producers.</p>
             </div>
         </div>
@@ -159,7 +161,7 @@ if ($result) {
                                 <?php endif; ?>
                             </div>
                             <div class="category-card__actions">
-                                <button type="button" class="btn btn--small">Add to basket</button>
+                                <button type="button" class="btn btn--small"><a href="../php/index.php">Add to basket</a></button>
                             </div>
                         </article>
                     <?php endforeach; ?>

@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo"></li>
-                <li><a href="../php/redirect.php">Marketplace</a></li>
+                <li><a href="../php/marketplace.php">Marketplace</a></li>
                 <li><a href="../php/redirect.php">Categories</a></li>
                 <li><a href="../php/redirect.php">Delivery and <br>Collection</a></li>
                 <li><a href="../php/redirect.php">About Us</a></li>
@@ -77,13 +77,84 @@
     <!===Testimonials from customers and sellers===!>
 
     <section class="testimonials">
-        <h2 class="testimonial-heading">What Our Customers and Sellers Say</h2>
-
-        <div class="testimonial-swiper container">
-            <div>
+        <div class="testimonials__inner">
+            <div class="testimonials__header">
+                <h2>What Our Customers and Sellers Say</h2>
+                <p>Real feedback from buyers and sellers who love our local produce marketplace.</p>
+            </div>
+            <div class="testimonials__grid">
                 <article class="testimonial-card">
-                    <p>"GLH has transformed the way I shop for groceries. The quality of the produce is exceptional, and I love supporting local farmers."</p>
-                    <h3>- Sarah M.</h3>
+                    <div class="testimonial-card__meta">
+                        <img src="../pictures/icon.png" alt="Jane Doe" class="testimonial-card__image">
+                        <div>
+                            <p class="testimonial-card__badge">Customer</p>
+                            <h3 class="testimonial-card__name">Sarah Michelle</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                        </div>
+                    </div>
+                    <p class="testimonial-card__text">"Greenfield Local Hub has made it easier to find who my local farmers are and have helped me learn about my community!</p>
+                </article>
+            </div>
+
+             <div class="testimonials__grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-card__meta">
+                        <img src="../pictures/icon.png" alt="Jane Doe" class="testimonial-card__image">
+                        <div>
+                            <p class="testimonial-card__badge">Customer</p>
+                            <h3 class="testimonial-card__name">Jane Doe</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                        </div>
+                    </div>
+                    <p class="testimonial-card__text">"GLH has transformed the way I shop for produce. The quality is unmatched, and I love supporting local farmers!"</p>
+                </article>
+            </div>
+
+             <div class="testimonials__grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-card__meta">
+                        <img src="../pictures/icon.png" alt="Jane Doe" class="testimonial-card__image">
+                        <div>
+                            <p class="testimonial-card__badge">Local Producer</p>
+                            <h3 class="testimonial-card__name">Gregory Thomson</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked "></span>
+                        </div>
+                    </div>
+                    <p class="testimonial-card__text">"GLH has allowed me to see the ease and art of selling my produce to those in my community!"</p>
+                </article>
+            </div>
+
+             <div class="testimonials__grid">
+                <article class="testimonial-card">
+                    <div class="testimonial-card__meta">
+                        <img src="../pictures/icon.png" alt="Jane Doe" class="testimonial-card__image">
+                        <div>
+                            <p class="testimonial-card__badge">Customer</p>
+                            <h3 class="testimonial-card__name">Sylvia Johnson</h3>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star "></span>
+                        </div>
+                    </div>
+                    <p class="testimonial-card__text">"GLH has made shopping much easier for myself."</p>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <footer>
 

@@ -246,8 +246,7 @@ function get_step_class($step, $currentStep, $status) {
         <nav>
             <img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo">
             <li><a href="profile.php">Profile</a></li>
-            <li><a href="marketplace.php">Marketplace</a></li>
-            <li><a href="categories.php">Categories</a></li>
+            <li><a href="categories.php">Categories and Produce</a></li>
             <li><a href="orders.php">My Orders</a></li>
             <li><a href="delivery_collection.php">Delivery and Collection</a></li>
             <li><a href="GLHLoyalty.php">GLHLoyalty</a></li>
