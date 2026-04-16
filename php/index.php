@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once 'config.php';
+require_once '../config.php';
+
 
 // create users table if not exists
 $createUsers = "
@@ -233,7 +234,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <?php endif; ?>
             
         </div>
-        <a href="homepage.php" class="back-button">
+        <a href="../php/homepage.php" class="back-button">
                 <span class="back-icon">&#8592;</span> Back to Homepage
             </a>
     </div>

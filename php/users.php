@@ -159,8 +159,11 @@ function get_step_class($step, $currentStep, $status) {
 <body>
     <div class="container">
         <h1>Welcome, <?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?>!</h1>
-        
-        
+
+        <div class="basket-link">
+            <a href="basket.php"><i class="fas fa-shopping-basket"></i> View Basket</a>
+        </div>
+
         <!-- Points Tracker Card -->
         <div class="points-tracker-card">
             <div class="points-content">
