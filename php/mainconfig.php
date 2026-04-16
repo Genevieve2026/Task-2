@@ -5,7 +5,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'glh_db');
 
 // Connect to MySQL server (no DB yet)
-$conn = new mysqli('127.0.0.1', 'root', '');
+$conn = new mysqli('localhost', 'root', '');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -17,7 +17,6 @@ if (!$conn->query("CREATE DATABASE IF NOT EXISTS glh_db CHARACTER SET utf8mb4 CO
 if (!$conn->select_db('glh_db')) {
     die("Database selection failed: " . $conn->error);
 }
-
 
 // Set charset to UTF-8
 $conn->set_charset("utf8mb4");

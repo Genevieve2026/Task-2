@@ -2,13 +2,22 @@
 session_start();
 include 'config.php';
 
-//hardcoded products for category cards - there are also dynamic products from the database in the "explore" section below.
-//the dynamic products are added through the admin panel
+if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 
-// Fetch all products from database
+$message = '';
+
+function findProductById(array $products, int $productId) {
+    foreach ($products as $product) {
+        if ((int)$product['id'] === $productId) {
+            return $product;
+        }
+    }
+    return null;
+}
+
 $products = [
-    // Example hardcoded product
-
     [
         'id' => 1,
         'name' => 'Broccoli',
@@ -20,8 +29,23 @@ $products = [
     ]
 ];
 $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
-if ($result) {
+if ($result && $result->num_rows > 0) {
     $products = $result->fetch_all(MYSQLI_ASSOC);
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'], $_POST['product_id'])) {
+    $productId = (int)$_POST['product_id'];
+    $product = findProductById($products, $productId);
+
+    if ($product) {
+        if (!isset($_SESSION['cart'][$productId])) {
+            $_SESSION['cart'][$productId] = 0;
+        }
+        $_SESSION['cart'][$productId]++;
+        $message = 'Added "' . htmlspecialchars($product['name']) . '" to your basket.';
+    } else {
+        $message = 'Unable to add that product to your basket.';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -110,7 +134,11 @@ if ($result) {
             <div class="categories__heading">
                 <span class="eyebrow">explore</span>
                 <h1>Explore Our Marketplace</h1>
-                <p>All products added by admins appear here automatically.</p>
+                <?php if (!empty($message)): ?>
+                    <p style="color: #2b662b; font-weight: 600;"><?php echo $message; ?></p>
+                <?php else: ?>
+                    <p>All products added by admins appear here automatically.</p>
+                <?php endif; ?>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Farmer/Producer'): ?>
                     <div class="admin-button">
                         <a href="admin_products.php" class="btn btn--small">Manage products</a>
@@ -159,7 +187,10 @@ if ($result) {
                                 <?php endif; ?>
                             </div>
                             <div class="category-card__actions">
-                                <button type="button" class="btn btn--small">Add to basket</button>
+                                <form method="post" style="margin:0;">
+                                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product['id']); ?>">
+                                    <button type="submit" name="add_to_cart" value="1" class="btn btn--small">Add to basket</button>
+                                </form>
                             </div>
                         </article>
                     <?php endforeach; ?>

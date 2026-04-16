@@ -233,7 +233,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <?php endif; ?>
             
         </div>
-        <a href="homepage.php" class="back-button">
+        <a href="../php/homepage.php" class="back-button">
                 <span class="back-icon">&#8592;</span> Back to Homepage
             </a>
     </div>
