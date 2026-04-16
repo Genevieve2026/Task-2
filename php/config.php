@@ -5,15 +5,18 @@ define('DB_PASS', '');
 define('DB_NAME', 'glh_db');
 
 // Connect to MySQL server (no DB yet)
-$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, '', 3306);
-
+$conn = new mysqli('127.0.0.1', 'root', '');
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 // Auto-create database if missing, then select it
-$conn->query("CREATE DATABASE IF NOT EXISTS " . DB_NAME);
-$conn->select_db(DB_NAME);
+if (!$conn->query("CREATE DATABASE IF NOT EXISTS glh_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci")) {
+    die("Database creation failed: " . $conn->error);
+}
+if (!$conn->select_db('glh_db')) {
+    die("Database selection failed: " . $conn->error);
+}
 
 
 // Set charset to UTF-8
