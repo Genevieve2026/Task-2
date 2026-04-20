@@ -203,9 +203,9 @@
                 <img src="../pictures/AMEX.png" alt="American Express">
             </div>
             <div class="legal">
-                <p><a href="#">Copyright Notices</a> | <a href="#">Terms of Service</a></p>
-                <p><a href="#">Terms and Conditions</a> | <a href="#">Food Safety and Hygiene Regulations</a></p>
-                <p><a href="#">Privacy Policy</a> | <a href="#">Return Policy</a></p>
+                <p><a href="../html/legalities.html">Copyright Notices</a> | <a href="../html/legalities.html">Terms of Service</a></p>
+                <p><a href="../html/legalities.html">Terms and Conditions</a> | <a href="../html/legalities.html">Food Safety and Hygiene Regulations</a></p>
+                <p><a href="../html/legalities.html">Privacy Policy</a> | <a href="../html/legalities.html">Return Policy</a></p>
 
         <p>&copy; 2026 Greenfield Local Hub. All rights reserved.</p>
     </footer>

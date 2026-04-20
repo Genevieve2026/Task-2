@@ -2,52 +2,17 @@
 session_start();
 include 'config.php';
 
-if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
+//hardcoded products for category cards - there are also dynamic products from the database in the "explore" section below.
+//the dynamic products are added through the admin panel
 
-$message = '';
-
-function findProductById(array $products, int $productId) {
-    foreach ($products as $product) {
-        if ((int)$product['id'] === $productId) {
-            return $product;
-        }
-    }
-    return null;
-}
-
-$products = [
-    [
-        'id' => 1,
-        'name' => 'Broccoli',
-        'details' => 'Fresh, locally-sourced broccoli packed with nutrients and flavor.',
-        'category' => 'Vegetables',
-        'price' => 2.99,
-        'discount' => 10,
-        'image' => '../images/example-product.jpg'
-    ]
-];
+// Fetch all products from database
+$products = [];
 $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
-if ($result && $result->num_rows > 0) {
+if ($result) {
     $products = $result->fetch_all(MYSQLI_ASSOC);
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'], $_POST['product_id'])) {
-    $productId = (int)$_POST['product_id'];
-    $product = findProductById($products, $productId);
-
-    if ($product) {
-        if (!isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId] = 0;
-        }
-        $_SESSION['cart'][$productId]++;
-        $message = 'Added "' . htmlspecialchars($product['name']) . '" to your basket.';
-    } else {
-        $message = 'Unable to add that product to your basket.';
-    }
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'], $_POST
         <div class="categories__hero">
             <div class="categories__heading">
                 <span class="eyebrow">categories</span>
+                <span class="back-link"><a href="../php/users.php"><i class="fas fa-arrow-left"></i> Back to My Account</a></span>
                 <h1>Browse Our Categories</h1>
+
                 <p>Discover a wide range of locally sourced products from our trusted farmers and producers.</p>
             </div>
         </div>
@@ -134,11 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'], $_POST
             <div class="categories__heading">
                 <span class="eyebrow">explore</span>
                 <h1>Explore Our Marketplace</h1>
-                <?php if (!empty($message)): ?>
-                    <p style="color: #2b662b; font-weight: 600;"><?php echo $message; ?></p>
-                <?php else: ?>
-                    <p>All products added by admins appear here automatically.</p>
-                <?php endif; ?>
+                <p>All products added by admins appear here automatically.</p>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'Farmer/Producer'): ?>
                     <div class="admin-button">
                         <a href="admin_products.php" class="btn btn--small">Manage products</a>
@@ -187,10 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'], $_POST
                                 <?php endif; ?>
                             </div>
                             <div class="category-card__actions">
-                                <form method="post" style="margin:0;">
-                                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product['id']); ?>">
-                                    <button type="submit" name="add_to_cart" value="1" class="btn btn--small">Add to basket</button>
-                                </form>
+                                <button type="button" class="btn btn--small"><a href="../php/index.php">Add to basket</a></button>
                             </div>
                         </article>
                     <?php endforeach; ?>
