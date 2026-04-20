@@ -20,8 +20,8 @@
                 <li><a href="../php/redirect.php">Delivery and <br>Collection</a></li>
                 <li><a href="../php/redirect.php">About Us</a></li>
                 <li><a href="../php/redirect.php">Contact</a></li>
-                <li><a href="../php/index.php">Sign in</a></li>
-                <li><button><a href="../php/index.php">Join Us Today</a></button></li>
+                <li><a href="index.php">Sign in</a></li>
+                <li><button><a href="index.php">Join Us Today</a></button></li>
             </ul>
         </nav>
     </header>
