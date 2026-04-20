@@ -1,0 +1,103 @@
+/*importing Google Fonts*/
+
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Didact Gothic', sans-serif;
+    background-color: #f4f4f4;
+
+}
+.settings-container{
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+h2{
+    margin-bottom: 20px;
+    color: #333;
+}
+label{
+    display: block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"],
+textarea,
+select{
+    width: 100%;
+    padding: 10px;
+    border-radius:6px;
+    border: 1px solid #ccc;
+    font-size:15px
+
+}
+
+textarea{
+    resize: vertical;
+    min-height:80px
+}
+
+/*button styling*/
+
+button{
+    margin-top: 20px;
+    background-color: #66bd3d;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color:#57a832;
+}
+
+.avatar-preview{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    overflow:hidden;
+    border: 2px solid #66bd3d;
+
+}
+
+.avatar-preview img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: fill;
+    
+}
+.screen-reader-container{
+    margin-top: 20px;
+}
+.toggle-reader{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.speed-control{}
+
+.voice-select{
+
+}
+.google-translate-element{
+
+}

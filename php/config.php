@@ -5,7 +5,7 @@ define('DB_PASS', '');
 define('DB_NAME', 'glh_db');
 
 // Connect to MySQL server (no DB yet)
-$conn = new mysqli('localhost', 'root', '','',3307);
+$conn = new mysqli('localhost', 'root', '','',3306);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
