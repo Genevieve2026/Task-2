@@ -9,6 +9,7 @@ $conn->query("CREATE TABLE IF NOT EXISTS products (
     category VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     discount DECIMAL(5, 2) DEFAULT 0,
+    product_quantity INT DEFAULT 1, 
     image VARCHAR(255),
     details TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -38,8 +39,8 @@ if (isset($_POST['add_product'])) {
         }
     }
 
-    $stmt = $conn->prepare("INSERT INTO products (name, category, price, discount, image, details) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssddss", $name, $category, $price, $discount, $image, $details);
+    $stmt = $conn->prepare("INSERT INTO products (name, category, price, discount, quantity, image, details) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssddis", $name, $category, $price, $discount, $quantity, $image, $details);
     if ($stmt->execute()) {
         $message = "Product added successfully!";
         header('Location: admin_products.php');
@@ -56,9 +57,10 @@ if (isset($_POST['update_product'])) {
     $category = $_POST['category'];
     $price = $_POST['price'];
     $discount = $_POST['discount'];
+    $quantity = $_POST['quantity'];
 
-    $stmt = $conn->prepare("UPDATE products SET name=?, category=?, price=?, discount=? WHERE id=?");
-    $stmt->bind_param("ssddi", $name, $category, $price, $discount, $id);
+    $stmt = $conn->prepare("UPDATE products SET name=?, category=?, price=?, discount=?, quantity=? WHERE id=?");
+    $stmt->bind_param("ssddii", $name, $category, $price, $discount, $quantity, $id);
     if ($stmt->execute()) {
         $message = "Product updated successfully!";
         header('Location: admin_products.php');
@@ -113,6 +115,7 @@ $products = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
             <div class="inputBox">
                 <input type="number" min="0" step="0.01" name="price" required placeholder="Enter product price" class="box">
                 <input type="number" min="0" max="100" step="0.01" name="discount" required placeholder="Enter discount percentage" class="box">
+                <input type="number" name="quantity" min="1" value="1" class="box" required placeholder="Enter quantity">
                 <input type="file" name="image" required class="box" accept="image/jpg, image/jpeg, image/png">
             </div>
             <textarea name="details" class="box" cols="30" rows="10" placeholder="Enter product details"></textarea>
@@ -134,6 +137,7 @@ $products = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
                         /*figure out how to add sellers name in here*/
                         <p>Price: £<?php echo number_format($product['price'], 2); ?></p>
                         <p>Discount: <?php echo $product['discount'] ?? 0; ?>%</p>
+                        <p>Stock: <?php echo $product['quantity']; ?></p>
                     </div>
                     <form method="POST" class="edit-form">
                         <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
