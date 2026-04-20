@@ -2,6 +2,18 @@
 session_start();
 include 'config.php';
 
+// create products table if not exists
+$conn->query("CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    discount DECIMAL(5, 2) DEFAULT 0,
+    image VARCHAR(255),
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB");
+
 // Check if admin
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'Farmer/Producer') {
     header('Location: index.php');
