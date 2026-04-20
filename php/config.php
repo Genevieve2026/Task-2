@@ -18,6 +18,7 @@ if (!$conn->select_db('glh_db')) {
     die("Database selection failed: " . $conn->error);
 }
 
+
 // Set charset to UTF-8
 $conn->set_charset("utf8mb4");
 ?>

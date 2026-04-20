@@ -6,19 +6,7 @@ include 'config.php';
 //the dynamic products are added through the admin panel
 
 // Fetch all products from database
-$products = [
-    // Example hardcoded product
-
-    [
-        'id' => 1,
-        'name' => 'Broccoli',
-        'details' => 'Fresh, locally-sourced broccoli packed with nutrients and flavor.',
-        'category' => 'Vegetables',
-        'price' => 2.99,
-        'discount' => 10,
-        'image' => '../images/example-product.jpg'
-    ]
-];
+$products = [];
 $result = $conn->query("SELECT * FROM products ORDER BY created_at DESC");
 if ($result) {
     $products = $result->fetch_all(MYSQLI_ASSOC);
