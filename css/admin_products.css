@@ -129,6 +129,87 @@ textarea.box {
     align-self: flex-start;
 }
 
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.categories label {
+    background: #f1f1f1;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.categories input {
+    margin-right: 5px;
+}
+
+/* Container for all category chips */
+.category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Individual chip */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #f2f2f2;
+    color: #333;
+    border: 1px solid #e0e0e0;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.chip:hover {
+    transform: translateY(-1px);
+    background: #e9e9e9;
+}
+
+.category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Base chip */
+.chip {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+/* Category colours */
+.chip.vegetables { background: #4CAF50; }
+.chip.fruits { background: #FF9800; }
+.chip.seafood { background: #03A9F4; }
+.chip.proteins { background: #9C27B0; }
+.chip.dairy { background: #F44336; }
+.chip.milk { background: #2196F3; }
+.chip.cheese { background: #FFC107; color: #000; }
+.chip.seasonal { background: #8BC34A; }
+.chip.halal { background: #2E7D32; }
+.chip.kosher { background: #1A237E; }
+.chip.crustaceans { background: #00BCD4; }
+.chip.shellfish { background: #009688; }
+.chip.limited { background: #607D8B; }
+
+
+
+
 @media (max-width: 768px) {
     .flex, .inputBox {
         flex-direction: column;

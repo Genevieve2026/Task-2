@@ -168,3 +168,9 @@ select:focus {
         font-size: 18px;
         line-height: 1;
     }
+
+/*css for t&cs checkbox*/
+.terms a{
+    color: #067e10;
+    text-decoration: none;
+}

@@ -33,7 +33,8 @@
             <form>
                 <div class="search">
                     <i class="fas fa-magnifying-glass"></i>
-                    <input type="text" placeholder="What are you looking for? Seasonal items...? Locations...?" name="search">
+                    <input type="text" placeholder="What are you looking for? Seasonal items...?" name="search">
+                    <div id="search-results"></div>
                 </div>
             </form>
 

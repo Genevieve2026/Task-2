@@ -25,6 +25,9 @@ if ($result) {
 <body>
     <section class="categories" id="categories">
         <div class="categories__hero">
+            <div class="basket-icon">
+                <a href="../php/basket.php"><i class="fas fa-shopping-basket"></i></a>
+            </div>
             <div class="categories__heading">
                 <span class="eyebrow">categories</span>
                 <span class="back-link"><a href="../php/users.php"><i class="fas fa-arrow-left"></i> Back to My Account</a></span>
@@ -124,7 +127,14 @@ if ($result) {
                             'seafood' => '#4bc2a3',
                             'proteins' => '#d44f4f',
                             'dairy' => '#7b6cca',
-                            'seasonal' => '#ff8c42'
+                            'seasonal' => '#ff8c42',
+                            'milk' => '#9981a0',
+                            'cheese' => '#fffc66',
+                            'halal' => '#016601',
+                            'kosher' => '#111184',
+                            'crustaceans' => '#c24b4b',
+                            'shellfish' => '#840000',
+                            'limited' => '#e5005f'
                         ];
                         $chipColor = $categoryColors[strtolower($product['category'])] ?? '#999999';
                         $price = number_format($product['price'], 2);
@@ -136,7 +146,21 @@ if ($result) {
                             <div class="category-card__title"><?php echo htmlspecialchars($product['name']); ?></div>
                             <p><?php echo htmlspecialchars($product['details']); ?></p>
                             <div class="category-card__footer">
-                                <span class="category-chip" style="--chip-color: <?php echo $chipColor; ?>; "><?php echo htmlspecialchars($product['category']); ?></span>
+                                <?php
+                                    $categories = !empty($product['category'])
+                                        ? explode(', ', $product['category'])
+                                        : [];
+                                    ?>
+
+                                    <?php foreach ($categories as $cat): ?>
+                                        <?php
+                                        $catLower = strtolower($cat);
+                                        $chipColor = $categoryColors[$catLower] ?? '#999999';
+                                        ?>
+                                        <span class="category-chip" style="--chip-color: <?php echo $chipColor; ?>;">
+                                            <?php echo htmlspecialchars($cat); ?>
+                                        </span>
+                                    <?php endforeach; ?>
                                 <?php if ($discount > 0): ?>
                                     <span class="category-chip" style="--chip-color: #a10000;">-<?php echo $discount; ?>%</span>
                                 <?php endif; ?>
@@ -150,7 +174,7 @@ if ($result) {
                                 <?php endif; ?>
                             </div>
                             <div class="category-card__actions">
-                                <button type="button" class="btn btn--small"><a href="../php/index.php">Add to basket</a></button>
+                                <button type="button" class="btn btn--small"><a href="../php/basket.php">Add to basket</a></button>
                             </div>
                         </article>
                     <?php endforeach; ?>

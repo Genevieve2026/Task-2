@@ -228,8 +228,18 @@ $isLoggedIn = isset($_SESSION['user_id']);
                         </select>
                     </div>
                     <input type="hidden" name="action" value="register">
+
+                    <div class="form-group">
+                        <label class="terms">
+
+                            <input type="checkbox" id="terms" name="terms" required>
+                            I have read and agree to the <a href="../html/legalities.html" target="_blank">Terms and Conditions</a> and <a href="../html/privacy.html" target="_blank">Privacy Policy</a>
+                        </label> 
+                        <div class="error" style="color: red; display: none;">You must agree to the terms and conditions to register.</div>
+                    </div>
                     <button type="submit" class="btn">Sign Up</button>
                     <p class="switch-link">Already have an account? <a href="#" id="switch-to-login">Sign in!</a></p>
+
                 </form>
             <?php endif; ?>
             

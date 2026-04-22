@@ -1,8 +1,5 @@
 <?php
-/**
- * Database Setup Script
- * Run this once to create all required database tables
- */
+/* create all required database tables*/
 
 include 'config.php';
 

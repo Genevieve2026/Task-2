@@ -12,6 +12,7 @@ if ($result) {
     $products = $result->fetch_all(MYSQLI_ASSOC);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@ if ($result) {
         <div class="categories__hero">
             <div class="categories__heading">
                 <span class="eyebrow">categories</span>
-                <span class="back-link"><a href="../php/homepage.php"><i class="fas fa-arrow-left"></i> Back to Home</a></span>
+                <span class="back-link"><a href="../php/admin.php"><i class="fas fa-arrow-left"></i> Back to My Account</a></span>
                 <h1>Browse Our Categories</h1>
 
                 <p>Discover a wide range of locally sourced products from our trusted farmers and producers.</p>
@@ -146,13 +147,13 @@ if ($result) {
                                     $categories = !empty($product['category'])
                                         ? explode(', ', $product['category'])
                                         : [];
-                                ?>
+                                    ?>
 
-                                <?php foreach ($categories as $cat): ?>
-                                    <?php
+                                    <?php foreach ($categories as $cat): ?>
+                                        <?php
                                         $catLower = strtolower($cat);
                                         $chipColor = $categoryColors[$catLower] ?? '#999999';
-                                    ?>
+                                        ?>
                                         <span class="category-chip" style="--chip-color: <?php echo $chipColor; ?>;">
                                             <?php echo htmlspecialchars($cat); ?>
                                         </span>
@@ -161,7 +162,6 @@ if ($result) {
                                     <span class="category-chip" style="--chip-color: #a10000;">-<?php echo $discount; ?>%</span>
                                 <?php endif; ?>
                             </div>
-
                             <div class="category-card__price">
                                 <?php if ($discountedPrice !== null): ?>
                                     <span class="original-price">£<?php echo $price; ?></span>
@@ -171,12 +171,7 @@ if ($result) {
                                 <?php endif; ?>
                             </div>
                             <div class="category-card__actions">
-                                <form method="POST" action="basket.php">
-                                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                                    <button type="submit" name="add_to_basket" class="btn btn--small">
-                                        Add to basket
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn--small"><a href="../php/basket.php">Add to basket</a></button>
                             </div>
                         </article>
                     <?php endforeach; ?>

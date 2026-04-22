@@ -73,6 +73,7 @@ nav ul li button:hover {
     background: transparent;
     flex: 1;
 }
+
 /*css for hero section background*/
 .hero {
     background-image: url('../pictures/homepage-bg.png');
