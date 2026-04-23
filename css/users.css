@@ -10,7 +10,8 @@
 body {
   margin: 0;
   font-family: 'Didact Gothic', sans-serif;
-  background-color: #67b06d ;
+  background-image:url(../pictures/admin-bg.png) ;
+    background-size: cover;
 }
 .logo {
     height: 100px;
@@ -50,12 +51,12 @@ body {
 .container{
     margin-left: 240px; /* match sidebar width + gap */
     padding: 24px;
-    color: white;
+    color: #333;
 }
 .content {
   margin-left: 240px; /* match sidebar width + gap */
   padding: 24px;
-  color: white;
+  color: #333;
 }
 
 .content{
@@ -155,4 +156,50 @@ i:hover,
 
 .points-link:hover {
     text-decoration: underline;
+}
+
+.categories__heading p {
+    max-width: 520px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4f524d;
+}
+
+.categories__cards {
+    display: grid;
+    gap: 30px;
+    margin-top: 42px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    padding: 0 16px;
+    grid-auto-rows: minmax(min-content, max-content);
+}
+
+.categories__explore {
+    margin-top: 60px;
+    padding: 0 16px;
+}
+
+.category-card {
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(33, 33, 33, 0.06);
+    border-radius: 28px;
+    padding: 40px 32px;
+    box-shadow: 0 24px 42px rgba(23, 34, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.category-card__title {
+    font-size: 1.35rem;
+    text-transform: capitalize;
+    color: #1d1d1b;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+}
+
+.category-card p {
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: #5b5f57;
 }

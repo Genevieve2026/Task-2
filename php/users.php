@@ -177,87 +177,42 @@ function get_step_class($step, $currentStep, $status) {
                     <a href="GLHLoyalty.php" class="points-link">View Rewards →</a>
                 </div>
             </div>
-        </div>
-
-        <?php if (empty($orders)): ?>
-            <p>You have no orders yet.</p>
-        <?php else: ?>
-            <?php if ($latestOrder): ?>
-            <div class="order-stepper-wrapper">
-                <h2>Track your order: <span><?php echo htmlspecialchars($latestOrder['order_number']); ?></span></h2>
-                <div class="order-stepper">
-                    <div class="<?php echo get_step_class(1, $currentStep, $latestOrder['status']); ?>">
-                        <div class="step-circle"><i class="fas fa-clipboard-list"></i></div>
-                        <div class="step-label">Placed</div>
-                    </div>
-                    <div class="<?php echo get_step_class(2, $currentStep, $latestOrder['status']); ?>">
-                        <div class="step-circle"><i class="fas fa-users"></i></div>
-                        <div class="step-label">Processing</div>
-                    </div>
-                    <div class="<?php echo get_step_class(3, $currentStep, $latestOrder['status']); ?>">
-                        <div class="step-circle"><i class="fas fa-truck"></i></div>
-                        <div class="step-label">Shipped</div>
-                    </div>
-                    <div class="<?php echo get_step_class(4, $currentStep, $latestOrder['status']); ?>">
-                        <div class="step-circle"><i class="fas fa-home"></i></div>
-                        <div class="step-label">Delivered</div>
-                    </div>
-                </div>
-            </div>
-            <?php endif; ?>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Order Number</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th>Points Earned</th>
-                        <th>Created At</th>
-                        <th>Last Updated</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($orders as $order): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($order['order_number']); ?></td>
-                            <td><?php echo htmlspecialchars($order['status']); ?></td>
-                            <td>£<?php echo number_format($order['total'], 2); ?></td>
-                            <td><?php echo $order['points_earned'] > 0 ? '+' . number_format($order['points_earned']) : '-'; ?></td>
-                            <td><?php echo htmlspecialchars($order['created_at']); ?></td>
-                            <td><?php echo htmlspecialchars($order['updated_at']); ?></td>
-                            <td>
-                                <?php if ($order['status'] === 'Pending'): ?>
-                                    <form method="post" style="display:inline;">
-                                        <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
-                                        <input type="hidden" name="new_status" value="Cancelled">
-                                        <button type="submit">Cancel Order</button>
-                                    </form>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
-        
-        <br>
-        <a href="homepage.php">Back to Homepage</a>
-    </div>
+</div>
     
     <div class="sidebar">
         <nav>
             <img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo">
-            <li><a href="profile.php">Profile</a></li>
-            <li><a href="categories.php">Categories and Produce</a></li>
-            <li><a href="../php/order_confirmation.php">My Orders</a></li>
-            <li><a href="delivery_collection.php">Delivery and Collection</a></li>
-            <li><a href="GLHLoyalty.php">GLHLoyalty</a></li>
-            <li><a href="settings.php">Settings</a></li>
-            <li><a href="logout.php" id="logout-link">Logout</a></li>
+            <li><i class="fas fa-user"></i><a href="profile.php">Profile</a></li>
+            <li><i class="fas fa-list"></i><a href="categories.php">Categories and Produce</a></li>
+            <li><i class="fas fa-shopping-cart"></i><a href="../php/order_confirmation.php">My Orders</a></li>
+            <li><i class="fas fa-truck-fast"></i><a href="delivery_collection.php">Delivery and Collection</a></li>
+            <li><i class="fas fa-hand-holding-heart"></i><a href="GLHLoyalty.php">GLHLoyalty</a></li>
+            <li><i class="fas fa-cog"></i><a href="settings.php">Settings</a></li>
+            <li><i class="fa-solid fa-sign-out"></i><a href="logout.php" id="logout-link">Logout</a></li>
         </nav>
     </div>
 
+    <div class="categories__cards">
+                <article class="category-card">
+                    <div class="category-card__title">Learn more about local businesses</div>
+                    <p>Learning about small businesses can help them to grow and flourish.<br>
+                        these businesses tend to have the most natural and local ingredients.<br>
+                    Make sure to give these businesses a visit </p>
+                    </div>
+                </article>
+
+    <div class="categories__cards">
+            <article class="category-card">
+                <div class="category-card__title">Dietry Elements and Requirements</div>
+                <p>By using Greenfield Local Hub, each service provider guarentees the following:</p>
+                <ul>
+                    <li>Produce labelled and categorised.</li>
+                    <li>Ensuring religous needs are met.</li>
+                    <li>Producers and Farmers avoid cross contamination.</li>
+                    <li>Customers are at the forefront of out .</li>
+                </ul>
+                </div>
+            </article>
   
 </body>
 </html>

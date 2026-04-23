@@ -171,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
 <body>
     <div class="container">
         <header>
-            <div class="title">Secure Checkout</div>
+            <div class="title">Greenfield Local Hub Checkout</div>
         </header>
 
         <div class="checkout-form">
@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pay_now'])) {
                         <tr><th colspan="3">Total</th><th>£<?php echo number_format($total, 2); ?></th></tr>
                     </tfoot>
                 </table>
-                <p class="note">This checkout page uses a sandbox payment gateway simulation. No real card will be charged.</p>
+                <p class="note">This checkout page does not process real payments. Nothing will be charged.</p>
             </div>
 
             <div class="payment-section">

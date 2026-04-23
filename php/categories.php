@@ -2,6 +2,12 @@
 session_start();
 include 'config.php';
 
+$cart_count = 0;
+
+if (isset($_SESSION['cart'])) {
+    $cart_count = array_sum($_SESSION['cart']);
+}
+
 //hardcoded products for category cards - there are also dynamic products from the database in the "explore" section below.
 //the dynamic products are added through the admin panel
 
@@ -26,7 +32,10 @@ if ($result) {
     <section class="categories" id="categories">
         <div class="categories__hero">
             <div class="basket-icon">
-                <a href="../php/basket.php"><i class="fas fa-shopping-basket"></i></a>
+                <a href="../php/basket.php">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span>Basket (<?php echo $cart_count; ?>)</span>
+                </a>
             </div>
             <div class="categories__heading">
                 <span class="eyebrow">categories</span>
@@ -174,7 +183,13 @@ if ($result) {
                                 <?php endif; ?>
                             </div>
                             <div class="category-card__actions">
-                                <button type="button" class="btn btn--small"><a href="../php/basket.php">Add to basket</a></button>
+                                <form method="POST" action="../php/basket.php">
+                                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                                    <input type="number" name="quantity" value="1" min="1" class="qty-input">
+                                    <button type="submit" name="add_to_cart" class="btn btn--small">
+                                        Add to basket
+                                    </button>
+                                </form>
                             </div>
                         </article>
                     <?php endforeach; ?>

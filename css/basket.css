@@ -131,3 +131,136 @@ body.showCart .cartTab{
 .listCart::-webkit-scrollbar{
     width: 0;
 }
+
+/* basket container */
+.basket-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* title */
+h1 {
+    margin-bottom: 20px;
+}
+/*go back to categories page*/
+.back-link a {
+    color: #66bd3d;
+    text-decoration: none;
+}
+i:visited{
+    color: #66bd3d;
+    text-decoration: none;
+}
+
+/* basket items */
+.basket-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* rows of items */
+.basket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* left side of item */
+.item-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+/* price */
+.item-price {
+    font-size: 14px;
+}
+
+.price-old {
+    text-decoration: line-through;
+    color: #999;
+    margin-right: 8px;
+}
+
+.price-new {
+    color: #d10000;
+    font-weight: bold;
+}
+
+.price {
+    font-weight: bold;
+}
+
+/* right side of item */
+.item-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.qty-input {
+    width: 60px;
+    padding: 5px;
+}
+
+.subtotal {
+    font-weight: bold;
+    min-width: 80px;
+}
+
+/* remove button */
+.remove-btn {
+    color: #d10000;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.remove-btn:hover {
+    opacity: 0.7;
+}
+
+/* basket summary */
+.basket-summary {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* buttons */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: #66bd3d;
+    color: white;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn.secondary {
+    background: #ddd;
+}
+
+/* empty basket */
+.empty {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}

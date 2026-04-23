@@ -170,14 +170,9 @@ if ($result) {
                                     <span class="price">£<?php echo $price; ?></span>
                                 <?php endif; ?>
                             </div>
-                            <div class="category-card__actions">
-                                <form method="POST" action="basket.php">
-                                    <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                                    <button type="submit" name="add_to_basket" class="btn btn--small">
-                                        Add to basket
-                                    </button>
-                                </form>
-                            </div>
+                            <button type="button" class="btn btn--small">
+                                <a href="../php/index.php">Add to basket</a>
+                            </button>
                         </article>
                     <?php endforeach; ?>
                 <?php endif; ?>
