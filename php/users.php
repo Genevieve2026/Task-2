@@ -184,8 +184,8 @@ function get_step_class($step, $currentStep, $status) {
             <img src="../pictures/GLH logo.png" alt="GLH Logo" class="logo">
             <li><i class="fas fa-user"></i><a href="profile.php">Profile</a></li>
             <li><i class="fas fa-list"></i><a href="categories.php">Categories and Produce</a></li>
-            <li><i class="fas fa-shopping-cart"></i><a href="../php/order_confirmation.php">My Orders</a></li>
-            <li><i class="fas fa-truck-fast"></i><a href="delivery_collection.php">Delivery and Collection</a></li>
+            <li><i class="fas fa-shopping-cart"></i><a href="../php/track_order.php">My Orders</a></li>
+            <li><i class="fas fa-truck-fast"></i><a href="order_placement.php">Delivery and Collection</a></li>
             <li><i class="fas fa-hand-holding-heart"></i><a href="GLHLoyalty.php">GLHLoyalty</a></li>
             <li><i class="fas fa-cog"></i><a href="settings.php">Settings</a></li>
             <li><i class="fa-solid fa-sign-out"></i><a href="logout.php" id="logout-link">Logout</a></li>

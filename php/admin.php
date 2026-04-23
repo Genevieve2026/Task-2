@@ -40,9 +40,7 @@ $user_id = $_SESSION['user_id'];
                     <li><i class="fa-solid fa-user"></i><a href="profile.php">Profile</a></li>
                     <li><i class="fa-solid fa-shop"></i><a href="admin_categories.php">Marketplace</a></li>
                     <li><i class="fa-solid fa-list"></i><a href="admin_products.php">Categories</a></li>
-                    <li><i class="fa-solid fa-file-alt"></i><a href="../php/order_confirmation.php">My Orders</a></li>
-                    <li><i class="fa-solid fa-truck-fast"></i><a href="delivery_collection.php">Delivery and Collection</a></li>
-                    <li><i class="fa-solid fa-hand-holding-heart"></i><a href="GLHLoyalty.php">GLHLoyalty</a></li>
+                    <li><i class="fa-solid fa-truck-fast"></i><a href="../php/admin_order_placement.php">Delivery and Collection</a></li>
                     <li><i class="fa-solid fa-cog"></i><a href="settings.php">Settings</a></li>
                     <li><i class="fa-solid fa-sign-out"></i><a href="logout.php" id="logout-link">Logout</a></li>
                 </nav>

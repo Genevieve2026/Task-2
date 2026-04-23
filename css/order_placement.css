@@ -1,0 +1,111 @@
+/*import font*/
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap');
+
+
+/* Reset some defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Heading */
+h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Form container */
+form {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Text input */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Radio group */
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Section title */
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* Submit button */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: #66bd3d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #219150;
+}
+
+/* Message (success/error) */
+.message {
+    background: #e8f8f0;
+    color: #27ae60;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #b7e4c7;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Links */
+p {
+    margin-top: 15px;
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

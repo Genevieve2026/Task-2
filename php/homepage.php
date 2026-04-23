@@ -1,3 +1,6 @@
+<?php
+$show_cookie_popup = !isset($_COOKIE['cookie_consent']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
+
 <body>
+
+    <?php if ($show_cookie_popup): ?>
+    <div id="cookie-popup">
+        <p>We use cookies to improve your experience. By clicking 'Accept', you are agreeing to our <a href = "../html/legalities"> T&C's</a> and <a href = "../html/legalities">Privacy Policies.</a> </p>
+        <button id="accept-cookies">Accept</button>
+    </div>
+    <?php endif; ?>
+
     <header>
         <nav>
             <ul>
@@ -210,6 +222,14 @@
 
         <p>&copy; 2026 Greenfield Local Hub. All rights reserved.</p>
     </footer>
+
+    <script>
+document.getElementById("accept-cookies")?.addEventListener("click", function (event) {
+    event.preventDefault();
+    document.cookie = "cookie_consent=yes; path=/; max-age=" + 60*60*24*365;
+    document.getElementById("cookie-popup").style.display = "none";
+});
+</script>
     
 </body>
 </html>
