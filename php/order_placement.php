@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/order_placement.css">
 </head>
 <body>
-<h2>Checkout</h2>
+<h2>Delivery and Collection</h2>
 
 <?php if ($message): ?>
     <p class="message"><?php echo $message; ?></p>
